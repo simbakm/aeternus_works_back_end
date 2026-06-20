@@ -43,6 +43,7 @@ public class SecurityConfig {
                 .requestMatchers("/api/team", "/api/team/**").permitAll()
                 .requestMatchers("/api/inquiries", "/api/inquiries/**").permitAll() // public submission
                 .requestMatchers("/api/images", "/api/images/**").permitAll() // local image serving
+                .requestMatchers("/api/health").permitAll() // health check
                 .requestMatchers("/error").permitAll() // allow error rendering
                 // Swagger UI & OpenAPI Docs
                 .requestMatchers(
