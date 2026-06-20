@@ -1,5 +1,5 @@
 package com.example.aeternus_back_end;
-
+//test class
 import java.io.File;
 import java.net.URI;
 import software.amazon.awssdk.auth.credentials.AwsBasicCredentials;

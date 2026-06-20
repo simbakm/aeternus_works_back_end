@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: aeternus_back_end
+    env: docker
+    branch: main
+    plan: free
+    dockerOptions:
+      image: ghcr.io/simbakm/aeternus_back_end:latest
+    envVars:
+      - key: SPRING_DATASOURCE_URL
+      - key: SPRING_DATASOURCE_USERNAME
+      - key: SPRING_DATASOURCE_PASSWORD
+      - key: SUPABASE_URL
+      - key: SUPABASE_S3_ENDPOINT
+      - key: SUPABASE_S3_REGION
+      - key: SUPABASE_S3_ACCESS_KEY
+      - key: SUPABASE_S3_SECRET_KEY
+      - key: SUPABASE_S3_BUCKET
+      - key: SUPABASE_S3_DEFAULT_PATH
+      - key: SPRING_MAIL_USERNAME
+      - key: SPRING_MAIL_PASSWORD
+      - key: SPRING_MAIL_FROM
