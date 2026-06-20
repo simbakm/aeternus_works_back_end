@@ -86,7 +86,6 @@
             <version>2.25.15</version> <!-- Use the latest stable v2 version -->
         </dependency>
 
-
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
