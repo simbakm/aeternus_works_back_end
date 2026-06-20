@@ -1,11 +1,11 @@
 services:
   - type: web
-    name: aeternus_back_end
+    name: aeternus-back-end
     env: docker
     branch: main
     plan: free
     dockerOptions:
-      image: ghcr.io/simbakm/aeternus_back_end:latest
+      image: ghcr.io/simbakm/aeternus-back-end:latest
     envVars:
       - key: SPRING_DATASOURCE_URL
       - key: SPRING_DATASOURCE_USERNAME
