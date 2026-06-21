@@ -4,6 +4,7 @@ services:
     env: docker
     branch: main
     plan: free
+    autoDeploy: false
     dockerOptions:
       image: ghcr.io/simbakm/aeternus-back-end:latest
     envVars:
