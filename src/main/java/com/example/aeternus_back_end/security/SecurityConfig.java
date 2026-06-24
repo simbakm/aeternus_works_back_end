@@ -86,7 +86,7 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200", "https://aeternus-works-frontend-bjqsl0n7u.vercel.app", "https://aeternus-works-frontend.vercel.app"));
+        configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200", "https://aeternus-works-frontend-bjqsl0n7u.vercel.app", "https://aeternus-works-frontend.vercel.app", "https://www.aeternusworks.co.zw", "https://aeternusworks.co.zw"));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type"));
         configuration.setAllowCredentials(true);
