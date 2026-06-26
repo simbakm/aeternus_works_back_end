@@ -36,7 +36,7 @@ public class SecurityConfig {
             .cors(cors -> cors.configurationSource(corsConfigurationSource()))
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/auth/login").permitAll()
+                .requestMatchers("/api/auth/login", "/api/auth/forgot-password", "/api/auth/reset-password").permitAll()
                 .requestMatchers("/api/projects", "/api/projects/**").permitAll() // read access
                 .requestMatchers("/api/services", "/api/services/**").permitAll()
                 .requestMatchers("/api/renovations", "/api/renovations/**").permitAll()
@@ -45,6 +45,11 @@ public class SecurityConfig {
                 .requestMatchers("/api/images", "/api/images/**").permitAll() // local image serving
                 .requestMatchers("/api/health").permitAll() // health check
                 .requestMatchers("/error").permitAll() // allow error rendering
+                // Admin user management - read only for any admin, write for SUPER_ADMIN
+                .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/admin-users", "/api/admin-users/**").hasAnyRole("ADMIN", "SUPER_ADMIN")
+                .requestMatchers(org.springframework.http.HttpMethod.POST, "/api/admin-users", "/api/admin-users/**").hasRole("SUPER_ADMIN")
+                .requestMatchers(org.springframework.http.HttpMethod.PUT, "/api/admin-users/**").hasRole("SUPER_ADMIN")
+                .requestMatchers(org.springframework.http.HttpMethod.DELETE, "/api/admin-users/**").hasRole("SUPER_ADMIN")
                 // Swagger UI & OpenAPI Docs
                 .requestMatchers(
                         "/v3/api-docs",

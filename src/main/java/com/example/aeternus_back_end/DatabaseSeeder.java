@@ -21,11 +21,24 @@ public class DatabaseSeeder implements CommandLineRunner {
                     .username("admin")
                     .email("admin@aeternus.co.zw")
                     .passwordHash(passwordEncoder.encode("admin123"))
-                    .role("admin")
+                    .role("SUPER_ADMIN")
                     .build();
 
             adminUserRepository.save(defaultAdmin);
             System.out.println("Default admin created: admin / admin123");
+        } else {
+            // Migrate old role values to new format
+            adminUserRepository.findAll().forEach(user -> {
+                boolean changed = false;
+                if ("admin".equalsIgnoreCase(user.getRole())) {
+                    user.setRole("SUPER_ADMIN");
+                    changed = true;
+                }
+                if (changed) {
+                    adminUserRepository.save(user);
+                    System.out.println("Migrated role for user: " + user.getUsername());
+                }
+            });
         }
     }
 }
